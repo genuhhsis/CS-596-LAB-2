@@ -7,6 +7,7 @@
 This project implements a simplified traffic light controller using an ESP32 microcontroller. The system is designed to simulate a pedestrian crossing at a highway, featuring state transitions, timing controls, and accessibility features for visually impaired pedestrians. In addition, the display of the TTGOLily ESP32 displays what state and transition we are in for easy visibility and debugging.
 
 # Top Down View of Circuit
+![Top-down view of traffic light circuit](Top%20down%20view%20of%20circuit%20-%20villar%20and%20gervacio.jpg)
 
 # Features 
 Complete traffic light cycle (Red → Red-Yellow → Green → Yellow → Red)
