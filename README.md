@@ -17,7 +17,8 @@ Red LED = 2
 ![Top-down view of traffic light circuit](Top%20down%20view%20of%20circuit%20-%20villar%20and%20gervacio.jpg)
 
 # Video Demonstration
-- Link: 
+- Link:
+- actual video demo is also in repository
 
 # Features 
 Complete traffic light cycle (Red → Red-Yellow → Green → Yellow → Red)
