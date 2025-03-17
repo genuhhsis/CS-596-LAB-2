@@ -16,6 +16,9 @@ Red LED = 2
 - 220 OHM resistor was attached to LED + speaker for current limiting
 ![Top-down view of traffic light circuit](Top%20down%20view%20of%20circuit%20-%20villar%20and%20gervacio.jpg)
 
+# Video Demonstration
+- Link: 
+
 # Features 
 Complete traffic light cycle (Red → Red-Yellow → Green → Yellow → Red)
 Pedestrian-activated crossing request via touch button
