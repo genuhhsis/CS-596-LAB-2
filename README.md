@@ -17,7 +17,7 @@ Red LED = 2
 ![Top-down view of traffic light circuit](Top%20down%20view%20of%20circuit%20-%20villar%20and%20gervacio.jpg)
 
 # Video Demonstration
-- Link:
+- Link: https://www.youtube.com/watch?v=A6SAj98RFTY
 - actual video demo is also in repository
 
 # Features 
