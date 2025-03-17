@@ -49,7 +49,7 @@ Safety features including minimum green time after button press
 --- Buzzer continues with 500ms on, 1500ms off pattern
 
 
--Transition to Yellow State (after 5+ seconds from button press)
+- Transition to Yellow State (after 5+ seconds from button press)
 --- Green LED turns off, Yellow LED turns on
 --- Buzzer turns off during this transition state
 --- System remains in this state for 2 seconds
