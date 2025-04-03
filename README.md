@@ -1,8 +1,8 @@
-# CS:596 LAB 3
+# CS:596 LAB 2
  * Genesis Anne Villar (RED ID: 824435476)
  * Steven Gervacio (RedID: 825656527)
  * CS 596 IOT - Prof. Donyanavard
- * Due Date: 4/2/2025
+ * Due Date: 3/12/2025
 # Highway Traffic Light Controller with ESP32
 This project implements a simplified traffic light controller using an ESP32 microcontroller. The system is designed to simulate a pedestrian crossing at a highway, featuring state transitions, timing controls, and accessibility features for visually impaired pedestrians. In addition, the display of the TTGOLily ESP32 displays what state and transition we are in for easy visibility and debugging.
 # Top Down View of Circuit
