@@ -3,65 +3,62 @@
  * Steven Gervacio (RedID: 825656527)
  * CS 596 IOT - Prof. Donyanavard
  * Due Date: 4/2/2025
-
-# Temperature and Humidity Cloud-Connected IoT System
-This project implements a cloud-connected IoT sensor system using an ESP32 TTGO T-Display board, a DHT20 temperature and humidity sensor, and an AWS cloud instance. The system collects environmental data and transmits it to a cloud server in real-time, demonstrating a complete sensor-to-cloud architecture.
-
-# Hardware Setup
-The DHT20 sensor is connected to the ESP32 using I2C:
-- SDA: GPIO 21 (default I2C pins on ESP32)
-- SCL: GPIO 22 (default I2C pins on ESP32)
-- VCC: 3.3V
-- GND: Ground
-
-![Hardware Setup Diagram 
-
+# Highway Traffic Light Controller with ESP32
+This project implements a simplified traffic light controller using an ESP32 microcontroller. The system is designed to simulate a pedestrian crossing at a highway, featuring state transitions, timing controls, and accessibility features for visually impaired pedestrians. In addition, the display of the TTGOLily ESP32 displays what state and transition we are in for easy visibility and debugging.
+# Top Down View of Circuit
+- PINS
+Green LED = 12
+Yellow LED = 15
+Red LED = 2
+- Buzzer = 21
+- Button = 22
+- 220 OHM resistor was attached to LED + speaker for current limiting
+![Top-down view of traffic light circuit](Top%20down%20view%20of%20circuit%20-%20villar%20and%20gervacio.jpg)
 # Video Demonstration
-- Link: [Video Demo Link]()
-
+- Link: https://www.youtube.com/watch?v=A6SAj98RFTY
+- actual video demo is also in repository
 # Features 
-- Real-time temperature and humidity monitoring
-- WiFi connectivity to transmit sensor data to AWS cloud
-- 10-second interval data collection cycle
-- AWS EC2 instance with Flask web server for data reception
-- TFT display showing current readings and countdown timer
-- HTTP GET requests with temperature and humidity parameters
-- Error handling for sensor and network issues
-
-# TFT Display Interface
-The TTGO T-Display shows:
-- Current temperature in Celsius
-- Current humidity percentage
-- Countdown timer to next reading
-- Connection and transmission status
-
-# Cloud Architecture
-- AWS EC2 Ubuntu instance running a Flask application
-- Web server listening on port 5000
-- GET requests containing temperature and humidity data
-- Server console displaying received sensor values
-
-# System Operation
-- **System Initialization**
-  - Connect to WiFi network
-  - Initialize DHT20 sensor
-  - Set up TFT display
-  
-- **Data Collection Cycle**
-  - Read temperature and humidity values from DHT20
-  - Display readings on TFT screen
-  - Send data to AWS cloud server
-  - Start 10-second countdown to next reading
-  
-- **Error Handling**
-  - Sensor read failures display on TFT
-  - Network connection issues reported to serial monitor
-  - Automatic retry mechanism for temporary failures
-
-# Implementation Notes
-The system uses HTTP GET requests to transmit data in the following format:
-```
-GET /?temp=23.5&humid=45.7 HTTP/1.1
-```
-
-The AWS Flask server receives these parameters and logs them to the console, with future potential for database storage and visualization.
+Complete traffic light cycle (Red → Red-Yellow → Green → Yellow → Red)
+Pedestrian-activated crossing request via touch button
+Audio feedback system with different patterns for each traffic light state
+Configurable timing parameters for all states
+Safety features including minimum green time after button press
+# Start Up Sequence
+- System Initializes in Red State
+--- Red LED turns on
+--- Buzzer starts pulsing at 250ms on, 250ms off pattern (for visually impaired aid)
+--- System remains in this state for 10 seconds
+- Transition to Red-Yellow State
+--- Both Red and Yellow LEDs turn on
+--- Buzzer turns off during this transition state
+--- System remains in this state for 2 seconds
+- Transition to Green State
+--- Red and Yellow LEDs turn off, Green LED turns on
+--- Buzzer changes to slower pattern: 500ms on, 1500ms off
+--- System remains in this state indefinitely until the pedestrian button is pressed
+# Button Press Sequence
+- Pedestrian Presses Button During Green State
+--- System acknowledges button press but continues in Green state
+--- System must remain in Green for at least 5 seconds after button press
+--- Buzzer continues with 500ms on, 1500ms off pattern
+- Transition to Yellow State (after 5+ seconds from button press)
+--- Green LED turns off, Yellow LED turns on
+--- Buzzer turns off during this transition state
+--- System remains in this state for 2 seconds
+- Transition to Red State
+--- Yellow LED turns off, Red LED turns on
+--- Buzzer resumes rapid pulsing at 250ms on, 250ms off pattern
+--- System remains in this state for 10 seconds
+- Transition to Red-Yellow State
+--- Both Red and Yellow LEDs turn on
+--- Buzzer turns off during this transition state
+--- System remains in this state for 2 seconds
+- Return to Green State
+--- Red and Yellow LEDs turn off, Green LED turns on
+--- Buzzer returns to slower pattern: 500ms on, 1500ms off
+--- System remains in this state until the next button press
+# Buzzer Operation Summary
+Active During Red State: Fast pulsing (250ms on, 250ms off)
+Active During Green State: Slow pulsing (500ms on, 1500ms off)
+Inactive During Yellow and Red-Yellow States: Buzzer is off
+This cycle continues indefinitely, with the system staying in Green until a pedestrian requests to cross by pressing the button.
